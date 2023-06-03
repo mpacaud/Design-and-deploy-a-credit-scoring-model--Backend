@@ -11,10 +11,6 @@ from app import shap_interpretations as shap_fct
 import shap
 from shared_functions import txt_to_obj
 
-import warnings
-warnings.filterwarnings('ignore')
-warnings.simplefilter(action='ignore', category=FutureWarning)
-
 
 # Create the testing class.
 class unittests_backend (unittest.TestCase):
@@ -85,37 +81,30 @@ class unittests_backend (unittest.TestCase):
         """ Check responsivness. """
         
         #Arrange.
-#        value = '/api/interpretations/100001/0'
+        value = '/api/interpretations/100001/0'
         
         # Act.
-#        response = self.app.get(value)
+        response = self.app.get(value)
         
         # Assert.
-#        assert response.status_code == 200
-        i = 0
-        assert i == 0
+        assert response.status_code == 200
 
     def test_interpret_fct_returned_object_type (self):
     
         """ Check response serialized object type. """
         
-#        value = '/api/interpretations/100001/0'
-#        response = self.app.get(value)
-#        assert type(response.text) == type(str())
-        i = 0
-        assert i == 0
+        value = '/api/interpretations/100001/0'
+        response = self.app.get(value)
+        assert type(response.text) == type(str())
         
     def test_pred_fct_returned_value (self):
     
         """ Check response object type. """
     
-#        value = '/api/interpretations/100001/0'
-#        response = self.app.get(value)
-#        shap_expl = txt_to_obj(response.text)
-#        assert str(type(shap_expl)) == "<class 'shap._explanation.Explanation'>"
-         
-        i = 0
-        assert i == 0
+        value = '/api/interpretations/100001/0'
+        response = self.app.get(value)
+        shap_expl = txt_to_obj(response.text)
+        assert str(type(shap_expl)) == "<class 'shap._explanation.Explanation'>"
     
 
 # Run the tests.

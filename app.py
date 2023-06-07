@@ -50,7 +50,7 @@ SHAP_EXPLAINER = pickle.load(open(os.path.join(SHAP_INTERPRETATIONS_DIR_PATH, SH
 # Load the relevant datasets.
 #df_TRAIN = pd.read_csv(os.path.join(IMPORTS_DIR_PATH, 'preprocessed_data_train.csv'))
 #df_TEST = pd.read_csv(os.path.join(IMPORTS_DIR_PATH, 'preprocessed_data_new_customers.csv'))
-df_TEST = pickle.load(open(os.path.join(IMPORTS_DIR_PATH, 'preprocessed_data_new_customers.pkl'), "rb"))
+df_TEST = pd.read_pickle(os.path.join(IMPORTS_DIR_PATH, 'preprocessed_data_new_customers.pkl'))
 
 # Set the customer IDs column's values as the dataframe indeces.
 #X_TRAIN = df_TRAIN.set_index('SK_ID_CURR')
@@ -105,11 +105,11 @@ def shap_interpretations (customer_id, cat_class = 0):
     else: # Local.
         #explanations, _ = interpretability_shap(model, scaler, X_train, X_TEST.loc[[customer_id]], cat_class)
         explanations = interpretability_shap_prod(X_TEST.loc[[customer_id]], scaler, SHAP_EXPLAINER, cat_class)
-       
+
     # Serialization of the shap explanations object as a string to allow its transfer across APIs.
     # NB: Step required because impossible to jsonify otherwise.
     explanations_serialized = obj_to_txt(explanations)
-    
+
     return explanations_serialized #{'status': 'ok', 'explanations': explanations} #[explanations] #json.dumps(explanations, cls=to_json)
 
 

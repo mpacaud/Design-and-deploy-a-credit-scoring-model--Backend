@@ -13,11 +13,12 @@ This part of the project's application is splitted within many sub-parts:
 3. In requirements.txt you can find all required packages.
 4. In the Exports folder are stored all required data to import into the app for its functioning.
 5. shared_functions.py: Python function shared across many files in the prject.
+6. test.py: Unitary tests.
 
 
 ### Online host address
 
-https://hidden-savannah-70356.herokuapp.com
+https://mpacaud-oc-ds-p7-app-backend.herokuapp.com
 
 
 ### Further notes

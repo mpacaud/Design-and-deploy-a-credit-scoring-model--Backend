@@ -1,4 +1,4 @@
-## Scoring model implementation: Backend
+## Scoring model implementation - Backend
 
 ### Description
 
